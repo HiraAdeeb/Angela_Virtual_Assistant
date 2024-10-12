@@ -6,7 +6,13 @@ function speak(text) {
   text_speak.rate = 1;
   text_speak.volume = 1;
   text_speak.pitch = 1;
-
+  const voices = window.speechSynthesis.getVoices();
+  for (let i = 0; i < voices.length; i++) {
+  if (voices[i].name.toLowerCase().includes('female')) {
+    text_speak.voice = voices[i];
+    break;
+  }
+}
   window.speechSynthesis.speak(text_speak);
 }
 function wishMe() {
